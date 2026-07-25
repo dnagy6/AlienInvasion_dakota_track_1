@@ -34,11 +34,13 @@ class AlienInvasion:
 
 
     def _update_screen(self):
+        """Update image on the screen and flip to the new screen."""
         self.screen.blit(self.bg, (0,0))
         self.ship.draw()
         pygame.display.flip()
 
     def _check_events(self):
+        """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
