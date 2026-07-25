@@ -29,6 +29,7 @@ class AlienInvasion:
 
         while self.running:
             self._check_events()
+            self.ship.update()
             self._update_screen()
             self.clock.tick(self.settings.FPS)
 
@@ -46,6 +47,35 @@ class AlienInvasion:
                 self.running = False
                 pygame.quit()
                 sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                self._check_keydown_events(event)
+            elif event.type == pygame.KEYUP:
+                self._check_keyup_events(event)
+
+    def _check_keydown_events(self, event):
+        """Telling the program to respond to the keypresses from the player."""
+        if event.key == pygame.K_UP or event.key == pygame.K_w:
+            self.ship.moving_up = True
+        elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+            self.ship.moving_down = True
+        elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+            self.ship.moving_right = True
+        elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
+            self.ship.moving_left = True
+        elif event.key == pygame.K_q:
+            self.running = False
+            pygame.quit()
+            sys.exit()
+
+    def _check_keyup_events(self, event):
+        if event.key == pygame.K_UP or event.key == pygame.K_w:
+            self.ship.moving_up = False
+        elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+            self.ship.moving_down = False
+        elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+            self.ship.moving_right = False
+        elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
+            self.ship.moving_left = False
 
 if __name__ == '__main__':
     ai = AlienInvasion()
