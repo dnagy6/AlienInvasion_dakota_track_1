@@ -1,3 +1,12 @@
+"""
+Program: Alien Invasion (Track 1 Side-Scroller)
+Author: Dakota Nagy
+Purpose: Defines the player Ship sprite, handling 4-way spatial movement and bounds checking.
+Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for midleft orientation.
+Date: July 25, 2026
+"""
+
+
 import pygame
 from typing import TYPE_CHECKING
 from utilities import prepare_image
@@ -30,6 +39,7 @@ class Ship:
         self.rect = self.image.get_rect()
         self.rect.midleft = self.screen_rect.midleft
 
+        # ships movement flags
         self.moving_up = False
         self.moving_down = False
         self.moving_right = False
@@ -40,11 +50,12 @@ class Ship:
         self.arsenal = arsenal
 
     def update(self):
-        """Update the ships position based on active movement flags declared in 'init'."""
+        """Update the ships position based on active '# ships movement flags' declared in 'init'."""
         self._update_ship_movement()
         self.arsenal.update_arsenal()
 
     def _update_ship_movement(self):
+        """Update ship position based on movement flags and screen boundaries."""
         temp_speed = self.settings.ship_speed
 
         if self.moving_up and self.rect.top > self.boundaries.top:
@@ -65,4 +76,5 @@ class Ship:
         self.screen.blit(self.image, self.rect)
 
     def fire(self):
+        """Delegate bullet creation to the active arsenal system."""
         return self.arsenal.fire_bullet()

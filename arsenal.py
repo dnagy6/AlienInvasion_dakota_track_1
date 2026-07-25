@@ -1,3 +1,12 @@
+"""
+Program: Alien Invasion (Track 1 Side-Scroller)
+Author: Dakota Nagy
+Purpose: Manages active bullet groups, firing constraints, and off-screen sprite cleanup.
+Starter Code: Custom architecture created to encapsulate projectile management (DRY design).
+Date: July 25, 2026
+"""
+
+
 import pygame
 from typing import TYPE_CHECKING
 from bullet import Bullet

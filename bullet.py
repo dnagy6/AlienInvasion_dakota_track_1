@@ -1,3 +1,12 @@
+"""
+Program: Alien Invasion (Track 1 Side-Scroller)
+Author: Dakota Nagy
+Purpose: Manages individual bullet projectile behavior moving horizontally across the screen.
+Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), altered for rightward trajectory.
+Date: July 25, 2026
+"""
+
+
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
@@ -23,7 +32,7 @@ class Bullet(Sprite):
             self.settings.bullet_height,
             angle = -90,
         )
-        
+
         self.rect = self.image.get_rect()
         self.rect.midleft = game.ship.rect.midright
         self.x = float(self.rect.x)

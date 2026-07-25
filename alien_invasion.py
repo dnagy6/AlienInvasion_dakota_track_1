@@ -1,3 +1,12 @@
+"""
+Program: Alien Invasion (Track 1 Side-Scroller)
+Author: Dakota Nagy
+Purpose: Main entry point and core game loop managing events, screen updates, and game state.
+Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), refactored for horizontal gameplay.
+Date: July 25, 2026
+"""
+
+
 import sys
 import pygame
 from settings import Settings
@@ -77,6 +86,7 @@ class AlienInvasion:
             sys.exit()
 
     def _check_keyup_events(self, event):
+        """Telling the program to stop moving when the keys are released."""
         if event.key == pygame.K_UP or event.key == pygame.K_w:
             self.ship.moving_up = False
         elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
