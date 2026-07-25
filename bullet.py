@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
+from utilities import prepare_image
 
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
@@ -14,18 +15,15 @@ class Bullet(Sprite):
         super().__init__()
         self.screen = game.screen
         self.settings = game.settings
-              
-        raw_image = pygame.image.load(self.settings.bullet_file).convert_alpha()
-        
-        bounding_box = raw_image.get_bounding_rect()
-        trimmed_image = raw_image.subsurface(bounding_box)
-        
-        # M1 update - rotating the bullets clockwise so it faces directly to the right
-        scaled_image = pygame.transform.scale(
-            trimmed_image, (self.settings.bullet_width, self.settings.bullet_height)
-                )
-        self.image = pygame.transform.rotate(scaled_image, -90)
 
+        # Load, crop, scale, and rotate using utilities.py 
+        self.image = prepare_image(
+            self.settings.bullet_file,
+            self.settings.bullet_width,
+            self.settings.bullet_height,
+            angle = -90,
+        )
+        
         self.rect = self.image.get_rect()
         self.rect.midleft = game.ship.rect.midright
         self.x = float(self.rect.x)
