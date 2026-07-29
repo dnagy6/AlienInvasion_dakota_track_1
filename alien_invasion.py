@@ -14,6 +14,9 @@ from ship import Ship
 from arsenal import Arsenal
 from alien import Alien
 from alien_fleet import AlienFleet
+from game_stats import GameStats
+from time import sleep
+
 
 
 
@@ -24,6 +27,7 @@ class AlienInvasion:
         pygame.init()
 
         self.settings = Settings()
+        self.game_stats = GameStats(self.settings.starting_ship_count)
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption(self.settings.name)
@@ -45,6 +49,7 @@ class AlienInvasion:
         self.ship = Ship(self, Arsenal(self))
         self.alien_fleet = AlienFleet(self)
         self.alien_fleet.create_fleet()
+        self.game_active = True
 
 
     def run_game(self):
@@ -52,16 +57,17 @@ class AlienInvasion:
 
         while self.running:
             self._check_events()
-            self.ship.update()
-            self.alien_fleet.update()
-            self._check_collisions()
+            if self.game_active:
+                self.ship.update()
+                self.alien_fleet.update()
+                self._check_collisions()
             self._update_screen()
             self.clock.tick(self.settings.FPS)
 
     def _check_collisions(self):
         """Respond to ship, alien, and laser collisions."""
         if self.ship.check_collisions(self.alien_fleet.fleet):
-            self._reset_level()
+            self._ship_hit()
 
         fleet_breached = (
             self.alien_fleet.check_fleet_left()
@@ -86,6 +92,18 @@ class AlienInvasion:
         self.ship._center_ship()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.create_fleet()
+
+    def _ship_hit(self):
+        """Respond to the ship being struck by an alien or the fleet breaching the left boundary."""
+        if self.game_stats.ships_left > 1:
+            self.game_stats.ships_left -= 1
+            print(f"Ship destroyed! Lives remaining: {self.game_stats.ships_left}")
+            self._reset_level()
+            sleep(0.5)
+        else:
+            self.game_stats.ships_left = 0
+            self.game_active = False
+            print("GAME OVER! No lives remaining.")
 
 
     def _update_screen(self):
