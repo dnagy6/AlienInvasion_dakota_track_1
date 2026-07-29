@@ -24,20 +24,13 @@ class Alien(Sprite):
         self.boundaries = game.screen.get_rect()
         self.settings = game.settings
 
-        # Load and transform image using utilities.py
-        # self.image = prepare_image(
-        #     self.settings.alien_file,
-        #     self.settings.alien_width,
-        #     self.settings.alien_height,
-        #     angle = 90,
-        # )
-        
         self.image = pygame.image.load(self.settings.alien_file)
-        self.image = pygame.transform.scale(self.image, (
-            self.settings.alien_width, self.settings.alien_height))
+        self.image = pygame.transform.scale(
+            self.image, (self.settings.alien_width, self.settings.alien_height)
+        )
 
         self.rect = self.image.get_rect()
-        self.rect.x = x
+        self.rect.right = self.boundaries.right - y
         self.rect.y = y
 
         # smooth movement
