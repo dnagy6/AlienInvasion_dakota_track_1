@@ -46,6 +46,8 @@ class Alien(Sprite):
         """Move the alien vertically based on current FLEET direction."""
         if self.check_edges():
             self.settings.fleet_direction *= -1
+            self.x -= self.settings.fleet_shift_speed
+            self.rect.x = self.x
         
         self.y += self.settings.fleet_speed * self.settings.fleet_direction
         self.rect.y = self.y
