@@ -108,3 +108,18 @@ class AlienFleet:
         """Draw all aliens in the fleet."""
         for alien in self.fleet:
             alien.draw_alien()
+
+    def check_collisions(self, other_group):
+        """Check for collisions between aliens and another group.
+        Will delete both colliding sprites automatically."""
+
+        collisions = pygame.sprite.groupcollide(self.fleet, other_group, True, True)
+        return collisions
+
+    def check_fleet_left(self):
+        """Check if any alien in the fleet has reached the left edge of the screen."""
+        for alien in self.fleet.sprites():
+            if alien.rect.left <= 0:
+                return True
+        return False
+    

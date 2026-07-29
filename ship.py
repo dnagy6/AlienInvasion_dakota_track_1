@@ -37,7 +37,7 @@ class Ship:
         )
 
         self.rect = self.image.get_rect()
-        self.rect.midleft = self.screen_rect.midleft
+        self._center_ship()
 
         # ships movement flags
         self.moving_up = False
@@ -45,9 +45,19 @@ class Ship:
         self.moving_right = False
         self.moving_left = False
 
-        self.y = float(self.rect.y)
-        self.x = float(self.rect.x)
         self.arsenal = arsenal
+
+    def _center_ship(self):
+        self.rect.midleft = self.screen_rect.midleft
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
+
+    def check_collisions(self, other_group):
+        """Check if ship collides with any sprite in another group."""
+        if pygame.sprite.spritecollideany(self, other_group):
+            self._center_ship()
+            return True
+        return False
 
     def update(self):
         """Update the ships position based on active '# ships movement flags' declared in 'init'."""
