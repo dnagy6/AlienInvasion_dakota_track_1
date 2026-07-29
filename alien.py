@@ -37,16 +37,18 @@ class Alien(Sprite):
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
 
-    # def check_edges(self):
-    #     """Return True if alien hits the TOP or BOTTOM screen boundary."""
-    #     screen_rect = self.screen.get_rect()
-    #     return self.rect.bottom >= screen_rect.bottom or self.rect.top <= 0
+    def check_edges(self):
+        """Return True if alien hits the TOP or BOTTOM screen boundary."""
+        screen_rect = self.screen.get_rect()
+        return self.rect.bottom >= screen_rect.bottom or self.rect.top <= 0
 
     def update(self):
-        # """Move the alien vertically based on current FLEET direction."""
-
-        # self.y += self.settings.fleet_speed * self.settings.fleet_direction
-        # self.rect.y = self.y
+        """Move the alien vertically based on current FLEET direction."""
+        if self.check_edges():
+            self.settings.fleet_direction *= -1
+        
+        self.y += self.settings.fleet_speed * self.settings.fleet_direction
+        self.rect.y = self.y
         pass
 
     def draw_alien(self):
