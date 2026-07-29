@@ -77,9 +77,13 @@ class AlienInvasion:
             self.impact_sound.play()
             self.impact_sound.fadeout(500)
 
+        if not self.alien_fleet.fleet:
+            self._reset_level()
+
     def _reset_level(self):
         """Clear active projectiles, clear remaining aliens, and rebuild the fleet."""
         self.ship.arsenal.arsenal.empty()
+        self.ship._center_ship()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.create_fleet()
 
