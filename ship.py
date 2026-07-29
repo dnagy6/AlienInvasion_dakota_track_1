@@ -1,9 +1,9 @@
 """
 Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
-Purpose: Defines the player Ship sprite, handling 4-way spatial movement and bounds checking.
+Purpose: Manages the player Ship sprite, handling 4-way spatial movement and bounds checking.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for midleft orientation.
-Date: July 25, 2026
+Date: July 29, 2026
 """
 
 

@@ -1,9 +1,9 @@
 """
 Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
-Purpose: Main entry point and core game loop managing events, screen updates, and game state.
+Purpose: Main entry point and core game loop managing events, collision physics, screen updates, and game states.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), refactored for horizontal gameplay.
-Date: July 25, 2026
+Date: July 29, 2026
 """
 
 
@@ -97,13 +97,13 @@ class AlienInvasion:
         """Respond to the ship being struck by an alien or the fleet breaching the left boundary."""
         if self.game_stats.ships_left > 1:
             self.game_stats.ships_left -= 1
-            print(f"Ship destroyed! Lives remaining: {self.game_stats.ships_left}")
+            # print(f"Ship destroyed! Lives remaining: {self.game_stats.ships_left}")
             self._reset_level()
             sleep(0.5)
         else:
             self.game_stats.ships_left = 0
             self.game_active = False
-            print("GAME OVER! No lives remaining.")
+            # print("GAME OVER! No lives remaining.")
 
 
     def _update_screen(self):

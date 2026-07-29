@@ -1,8 +1,8 @@
 """
 Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
-Purpose: 
-Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for side-scroller mechanics.
+Purpose: Manages dynamic alien fleet creation, vertical movement, boundary detection, and leftward shifting.
+Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for side-scrolling mechanics.
 Date: July 29, 2026
 """
 

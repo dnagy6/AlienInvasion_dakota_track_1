@@ -3,7 +3,7 @@ Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Manages individual bullet projectile behavior moving horizontally across the screen.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), altered for rightward trajectory.
-Date: July 25, 2026
+Date: July 29, 2026
 """
 
 

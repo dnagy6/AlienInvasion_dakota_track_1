@@ -2,8 +2,8 @@
 Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Manages active bullet groups, firing constraints, and off-screen sprite cleanup.
-Starter Code: Custom architecture created to encapsulate projectile management (DRY design).
-Date: July 25, 2026
+Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for side-scroller lifecycle.
+Date: July 29, 2026
 """
 
 
