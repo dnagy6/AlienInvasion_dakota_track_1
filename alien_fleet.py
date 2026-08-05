@@ -57,7 +57,7 @@ class AlienFleet:
 
         # Position fleet starting in the right half of the screen
         x_offset = int(screen_width - fleet_horizontal_space - alien_width)
-        y_offset = int((screen_height - fleet_vertical_space) // 2)
+        y_offset = int(self.settings.hud_height + ((screen_height - self.settings.hud_height) - fleet_vertical_space) // 2)
 
         return x_offset, y_offset
 
@@ -65,7 +65,7 @@ class AlienFleet:
         """Calculate max possible rows and columns for the screen dimensions."""
         # Restrict fleet width to the right side of the screen so it doesn't spawn on top of the ship
         fleet_width = (screen_width // 2) // alien_width
-        fleet_height = screen_height // alien_height
+        fleet_height = (screen_height - self.settings.hud_height) // alien_height
 
         # Keep numbers odd for clean modulo grid alignment
         if fleet_width % 2 == 0:

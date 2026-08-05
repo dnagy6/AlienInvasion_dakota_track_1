@@ -10,6 +10,8 @@ Date: July 29, 2026
 import pygame
 from typing import TYPE_CHECKING
 from utilities import prepare_image
+from hud import HUD
+
 
 
 if TYPE_CHECKING:
@@ -68,7 +70,7 @@ class Ship:
         """Update ship position based on movement flags and screen boundaries."""
         temp_speed = self.settings.ship_speed
 
-        if self.moving_up and self.rect.top > self.boundaries.top:
+        if self.moving_up and self.rect.top > self.settings.hud_height:
             self.y -= temp_speed
         if self.moving_down and self.rect.bottom < self.boundaries.bottom:
             self.y += temp_speed

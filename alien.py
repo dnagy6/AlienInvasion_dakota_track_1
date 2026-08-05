@@ -34,8 +34,14 @@ class Alien(Sprite):
         self.rect.y = self.y
 
     def check_edges(self):
-        """Return True if alien hits the top or bottom screen boundary."""
-        return self.rect.bottom >= self.boundaries.bottom or self.rect.top <= 0
+        """Return True if alien hits top HUD boundary or bottom screen edge."""
+        screen_rect = self.screen.get_rect()
+        
+        if self.rect.top <= self.settings.hud_height:
+            return True
+        if self.rect.bottom >= screen_rect.bottom:
+            return True
+        return False
 
     def update(self):
         """Move alien vertically based on fleet direction."""
