@@ -29,6 +29,7 @@ class AlienInvasion:
         pygame.init()
 
         self.settings = Settings()
+        self.settings.initialize_dynamic_settings()
         self.game_stats = GameStats(self.settings.starting_ship_count)
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
@@ -95,6 +96,7 @@ class AlienInvasion:
         self.ship._center_ship()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.create_fleet()
+        self.settings.increase_difficulty()
 
     def restart_game(self):
         """Reset stats, game state and elements, and start a new game session."""
