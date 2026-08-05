@@ -88,7 +88,9 @@ class AlienInvasion:
             self.impact_sound.fadeout(500)
 
         if not self.alien_fleet.fleet:
+            self.settings.increase_difficulty()
             self._reset_level()
+            
 
     def _reset_level(self):
         """Clear active projectiles, clear remaining aliens, and rebuild the fleet."""
@@ -96,11 +98,11 @@ class AlienInvasion:
         self.ship._center_ship()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.create_fleet()
-        self.settings.increase_difficulty()
 
     def restart_game(self):
         """Reset stats, game state and elements, and start a new game session."""
         # setting up dynamic Settings
+        self.settings.initialize_dynamic_settings()
         # reset Game Stats
         self.game_stats.reset_stats()
         # update HUD scores
@@ -130,6 +132,7 @@ class AlienInvasion:
         self.screen.blit(self.bg, (0,0))
         self.ship.draw()
         self.alien_fleet.draw()
+        #draw HUD elements
 
         if not self.game_active:
             self.play_button.draw()
