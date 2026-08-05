@@ -89,12 +89,14 @@ class AlienInvasion:
             self.impact_sound.play()
             self.impact_sound.fadeout(500)
             self.game_stats.update(collisions)
-            self.HUD.update_scores()
+            self.HUD._update_scores()
+
 
         if not self.alien_fleet.fleet:
             self.settings.increase_difficulty()
             self._reset_level()
             self.game_stats.update_level()
+            self.HUD._update_level()
             
 
     def _reset_level(self):
