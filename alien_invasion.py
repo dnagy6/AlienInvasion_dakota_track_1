@@ -152,7 +152,9 @@ class AlienInvasion:
     def _check_button_clicked(self):
         """Check if the Play button was clicked and start the game."""
         mouse_position = pygame.mouse.get_pos()
-        if self.play_button.check_clicked(mouse_position):
+        button_clicked = self.play_button.check_clicked(mouse_position)
+
+        if button_clicked and not self.game_active:
             self.restart_game()
 
     def _check_keydown_events(self, event):
