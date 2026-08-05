@@ -39,6 +39,8 @@ class Settings:
 
         self.text_color = (255, 255, 255)
         self.button_font_size = 48
+
+        self.hud_height = 50
         self.HUD_font_size = 15
         self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
 

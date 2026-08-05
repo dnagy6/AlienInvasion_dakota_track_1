@@ -12,7 +12,7 @@ class HUD:
         self.font = pygame.font.Font(self.settings.font_file, self.settings.HUD_font_size)
         self.padding = 20
 
-        self.hud_height = 50
+        self.hud_height = self.settings.hud_height
         self.center_y = self.hud_height // 2
 
         self._setup_life_image()
