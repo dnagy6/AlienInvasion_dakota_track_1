@@ -17,6 +17,7 @@ from alien_fleet import AlienFleet
 from game_stats import GameStats
 from time import sleep
 from button import Button
+from hud import HUD
 
 
 
@@ -30,7 +31,6 @@ class AlienInvasion:
 
         self.settings = Settings()
         self.settings.initialize_dynamic_settings()
-        self.game_stats = GameStats(self)
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption(self.settings.name)
@@ -39,6 +39,8 @@ class AlienInvasion:
         self.bg = pygame.transform.scale(self.bg, (
             self.settings.screen_width, self.settings.screen_height))
 
+        self.game_stats = GameStats(self)
+        self.HUD = HUD(self)
         self.running = True
         self.clock = pygame.time.Clock()
 
@@ -87,6 +89,7 @@ class AlienInvasion:
             self.impact_sound.play()
             self.impact_sound.fadeout(500)
             self.game_stats.update(collisions)
+            self.HUD.update_scores()
 
         if not self.alien_fleet.fleet:
             self.settings.increase_difficulty()
@@ -103,11 +106,9 @@ class AlienInvasion:
 
     def restart_game(self):
         """Reset stats, game state and elements, and start a new game session."""
-        # setting up dynamic Settings
         self.settings.initialize_dynamic_settings()
-        # reset Game Stats
         self.game_stats.reset_stats()
-        # update HUD scores
+        self.HUD.update_scores()
         self._reset_level()
         self.ship._center_ship()
         self.game_active = True
@@ -132,7 +133,7 @@ class AlienInvasion:
         self.screen.blit(self.bg, (0,0))
         self.ship.draw()
         self.alien_fleet.draw()
-        #draw HUD elements
+        self.HUD.draw()
 
         if not self.game_active:
             self.play_button.draw()
@@ -145,6 +146,7 @@ class AlienInvasion:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+                self.game_stats.save_scores()
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN and self.game_active == True:
@@ -178,6 +180,7 @@ class AlienInvasion:
                 self.laser_sound.fadeout(250)
         elif event.key == pygame.K_q:
             self.running = False
+            self.game_stats.save_scores()
             pygame.quit()
             sys.exit()
 
