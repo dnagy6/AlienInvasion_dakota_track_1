@@ -3,7 +3,7 @@ Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Helper functions for cross-platform asset loading, image scaling, cropping, and rotation.
 Starter Code: Custom helper module created for image transformation pipeline reuse.
-Date: July 25, 2026
+Date: August 9, 2026
 """
 
 

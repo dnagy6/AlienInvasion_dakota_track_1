@@ -3,7 +3,7 @@ Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Defines the Alien sprite class for enemy fleet creation and vertical/horizontal movement.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for side-scroller mechanics.
-Date: July 29, 2026
+Date: August 9, 2026
 """
 
 from typing import TYPE_CHECKING

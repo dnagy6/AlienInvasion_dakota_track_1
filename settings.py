@@ -3,7 +3,7 @@ Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Centralized configuration file storing display dimensions, speed rates, and asset paths.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition).
-Date: July 25, 2026
+Date: August 9, 2026
 """
 
 

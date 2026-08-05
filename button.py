@@ -1,3 +1,9 @@
+"""Program: Alien Invasion (Track 1 Side-Scroller)
+Author: Dakota Nagy
+Purpose: Manages button behavior and rendering for Alien Invasion.
+Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), altered for rightward trajectory.
+Date: August 9, 2026
+"""
 import pygame.font
 
 from typing import TYPE_CHECKING

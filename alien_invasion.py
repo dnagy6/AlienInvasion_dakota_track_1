@@ -3,7 +3,7 @@ Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Main entry point and core game loop managing events, collision physics, screen updates, and game states.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), refactored for horizontal gameplay.
-Date: July 29, 2026
+Date: August 9, 2026
 """
 
 

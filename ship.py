@@ -3,7 +3,7 @@ Program: Alien Invasion (Track 1 Side-Scroller)
 Author: Dakota Nagy
 Purpose: Manages the player Ship sprite, handling 4-way spatial movement and bounds checking.
 Starter Code: Adapted from 'Python Crash Course' by Eric Matthes (3rd Edition), modified for midleft orientation.
-Date: July 29, 2026
+Date: August 9, 2026
 """
 
 
@@ -50,6 +50,7 @@ class Ship:
         self.arsenal = arsenal
 
     def _center_ship(self):
+        """Center the ship on the left side of the screen."""
         self.rect.midleft = self.screen_rect.midleft
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
@@ -67,7 +68,7 @@ class Ship:
         self.arsenal.update_arsenal()
 
     def _update_ship_movement(self):
-        """Update ship position based on movement flags and screen boundaries."""
+        """Update ship position based on movement flags, screen and HUD boundaries."""
         temp_speed = self.settings.ship_speed
 
         if self.moving_up and self.rect.top > self.settings.hud_height:
